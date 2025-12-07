@@ -1,0 +1,465 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
+    background-color: #f8f5ff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1c4e9;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9c27b0;
+}
+
+/* 页面头部样式 */
+.header {
+    background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* 搜索和筛选功能区样式 */
+.search-filter-container {
+    background-color: white;
+    padding: 1.5rem;
+    margin: 16px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box {
+    display: flex;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    border-right: none;
+    background-color: white;
+}
+
+.search-box input:focus {
+    border-color: #6a1b9a;
+}
+
+.search-box button {
+    padding: 0.75rem 1.5rem;
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-box button:hover {
+    background-color: #4a148c;
+}
+
+.filter-box select {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    background-color: white;
+    min-width: 150px;
+}
+
+.filter-box select:focus {
+    border-color: #6a1b9a;
+}
+
+.filter-options select:focus {
+    border-color: #6a1b9a;
+}
+
+.filter-box {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-box label {
+    font-weight: bold;
+    color: #333;
+}
+
+#resetBtn {
+    padding: 0.75rem 1.5rem;
+    background-color: #ffb300;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* 响应式设计 */
+@media (max-width: 1000px) {
+    .search-filter-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .filter-box {
+        justify-content: center;
+    }
+}
+
+#resetBtn:hover {
+    background-color: #ff9800;
+    transform: translateY(-1px);
+}
+
+#resetBtn:active {
+    transform: translateY(0);
+}
+
+/* 主内容区样式 */
+.main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    gap: 2rem;
+}
+
+/* 历史事件展示区样式 */
+.events-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 历史事件卡片样式 */
+.event-card {
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #6a1b9a;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* 事件卡片头部样式 */
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.event-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.event-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6a1b9a;
+    margin: 0;
+}
+
+/* 右侧时间轴导航样式 */
+.timeline-navigation {
+    width: 250px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-right: 4px solid #6a1b9a;
+}
+
+/* 时间轴导航标题 */
+.timeline-navigation h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #6a1b9a;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* 时间轴导航列表 */
+.timeline-nav-list {
+    list-style: none;
+}
+
+/* 朝代标题样式 */
+.dynasty-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin: 0.75rem 0 0.25rem 0;
+    padding: 0.5rem;
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%);
+    border-radius: 4px;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dynasty-title:hover {
+    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+}
+
+.dynasty-name {
+    flex: 1;
+}
+
+.expand-arrow {
+    font-size: 0.8rem;
+    color: #6a1b9a;
+    transition: transform 0.3s ease;
+}
+
+/* 年份列表样式 */
+.year-list {
+    transition: all 0.3s ease;
+}
+
+/* 年份列表样式 */
+.year-list {
+    list-style: none;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 年份项样式 */
+.year-item {
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+.year-item:hover {
+    background-color: #f3e5f5;
+    color: #4a148c;
+    transform: translateX(3px);
+}
+
+/* 朝代标签样式 */
+.dynasty-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: #2196F3;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* 年份样式 */
+.event-year {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #6a1b9a;
+    margin-bottom: 0.5rem;
+}
+
+/* 具体时间样式 */
+.event-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 事件标题样式 */
+.event-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: #333;
+}
+
+/* 事件详情样式 */
+.event-details {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* 地点和人物样式 */
+.event-location, .event-people {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.25rem;
+}
+
+/* 政治制度标签样式 */
+.event-politics {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.politics-tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #bbdefb;
+}
+
+/* 事件摘要样式 */
+.event-brief {
+    color: #2f67d9;
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-style: italic;
+    background-color: #f0f4ff;
+    padding: 8px;
+    border-radius: 4px;
+    border-left: 3px solid #2f67d9;
+}
+
+/* 页脚样式 */
+.footer {
+    background: linear-gradient(135deg, #6a1b9a 0%, #8e24aa 100%);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 版权信息样式 */
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* 响应式设计 - 平板和手机 */
+@media screen and (max-width: 768px) {
+    /* 时间轴中心线调整到左侧 */
+    .timeline::after {
+        left: 28px;
+    }
+    
+    /* 所有事件卡片占满宽度 */
+    .timeline-item {
+        width: 100%;
+        padding-left: 5rem;
+        padding-right: 1rem;
+    }
+    
+    /* 取消偶数事件卡片的左侧偏移 */
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    /* 统一调整事件节点位置到左侧 */
+    .timeline-item::after {
+        left: 16px;
+    }
+    
+    /* 调整搜索筛选区域布局 */
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-box {
+        max-width: none;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* 响应式设计 - 小屏手机 */
+@media screen and (max-width: 480px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .timeline-item {
+        padding-left: 4rem;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+}

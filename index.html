@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国古代历史时间轴</title>
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="header">
+        <h1>中国古代历史时间轴</h1>
+        <p>按年代顺序展示中国古代历史重大事件，适合中小学生学习</p>
+    </header>
+
+    <!-- 搜索和筛选功能区 -->
+    <div class="search-filter-container">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="搜索历史事件、人物或地点...">
+            <button id="searchBtn">搜索</button>
+        </div>
+        <div class="filter-box">
+            <label for="dynastyFilter">朝代筛选：</label>
+            <select id="dynastyFilter">
+                <option value="">所有朝代</option>
+                <!-- 朝代选项将通过JavaScript动态生成 -->
+            </select>
+            <button id="resetBtn">重置</button>
+        </div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="main-container">
+        <!-- 历史事件展示区 -->
+        <div class="events-container" id="eventsContainer">
+            <!-- 历史事件卡片将通过JavaScript动态生成 -->
+        </div>
+        
+        <!-- 右侧时间轴导航 -->
+        <div class="timeline-navigation" id="timelineNavigation">
+            <!-- 时间轴导航将通过JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <!-- 页脚信息 -->
+    <footer class="footer">
+        <p>中国古代历史时间轴 | 数据来源于中小学生历史教材</p>
+        <p class="copyright">&copy; 2023 中国古代历史时间轴</p>
+    </footer>
+
+    <!-- 引入JavaScript文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
