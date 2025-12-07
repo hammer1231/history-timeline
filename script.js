@@ -566,7 +566,147 @@ const historicalEvents = [
         brief: "北宋时期指南针开始应用于航海，促进了海上贸易和航海技术的发展。"
     },
     {
-        id: 64,
+        id: 85,
+        year: "公元1127年",
+        date: null,
+        dynasty: "南宋",
+        event: "南宋建立",
+        location: "临安（今浙江杭州）",
+        figures: "赵构",
+        brief: "金兵攻破北宋都城开封，俘虏宋徽宗、宋钦宗，史称靖康之变。赵构在南京应天府即位，建立南宋，后迁都临安。"
+    },
+    {
+        id: 86,
+        year: "公元1127年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋高宗继位",
+        location: "南京应天府（今河南商丘）",
+        figures: "赵构",
+        brief: "宋高宗赵构是宋徽宗第九子，宋钦宗之弟，南宋的开国皇帝。"
+    },
+    {
+        id: 87,
+        year: "公元1134-1141年",
+        date: null,
+        dynasty: "南宋",
+        event: "岳飞抗金",
+        location: "中原地区",
+        figures: "岳飞",
+        brief: "岳飞率领岳家军多次击败金兵，收复建康、襄阳等地区，取得郾城大捷，为南宋稳定做出重要贡献。"
+    },
+    {
+        id: 88,
+        year: "公元1141年",
+        date: null,
+        dynasty: "南宋",
+        event: "绍兴和议",
+        location: "临安",
+        figures: "宋高宗、秦桧",
+        brief: "南宋与金朝签订绍兴和议，规定南宋向金称臣，每年贡银25万两、绢25万匹，划淮水为界，形成南北对峙局面。"
+    },
+    {
+        id: 89,
+        year: "公元1142年",
+        date: null,
+        dynasty: "南宋",
+        event: "岳飞被害",
+        location: "临安大理寺",
+        figures: "岳飞、秦桧",
+        brief: "宋高宗和秦桧以莫须有的罪名杀害岳飞，民族英雄含冤而死，宋金和议得以维持。"
+    },
+    {
+        id: 90,
+        year: "公元12世纪",
+        date: null,
+        dynasty: "南宋",
+        event: "朱熹创立理学",
+        location: "福建",
+        figures: "朱熹",
+        brief: "朱熹是南宋著名理学家，创立了以理气论为核心的客观唯心主义理学体系，对后世思想文化影响深远。"
+    },
+    {
+        id: 91,
+        year: "公元1162年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋孝宗继位",
+        location: "临安",
+        figures: "赵昚",
+        brief: "宋孝宗赵昚是宋太祖七世孙，宋高宗养子，是南宋较有作为的皇帝，主张抗金，改革弊政。"
+    },
+    {
+        id: 92,
+        year: "公元1163年",
+        date: null,
+        dynasty: "南宋",
+        event: "隆兴北伐",
+        location: "江淮地区",
+        figures: "张浚、李显忠",
+        brief: "宋孝宗发动隆兴北伐，试图收复失地，但由于宋军内部不和，最终失败，签订隆兴和议。"
+    },
+    {
+        id: 93,
+        year: "公元1189年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋光宗继位",
+        location: "临安",
+        figures: "赵惇",
+        brief: "宋光宗赵惇是宋孝宗第三子，在位期间与孝宗关系不和，朝政由李皇后把持，政治腐败。"
+    },
+    {
+        id: 94,
+        year: "公元1194年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋宁宗继位",
+        location: "临安",
+        figures: "赵扩",
+        brief: "宋宁宗赵扩是宋光宗次子，在位期间朝政由韩侂胄、史弥远等权臣把持，曾发动开禧北伐。"
+    },
+    {
+        id: 95,
+        year: "公元1206年",
+        date: null,
+        dynasty: "南宋",
+        event: "开禧北伐",
+        location: "江淮地区",
+        figures: "韩侂胄",
+        brief: "韩侂胄主持开禧北伐，试图收复失地，但由于准备不足，宋军大败，韩侂胄被杀，签订嘉定和议。"
+    },
+    {
+        id: 96,
+        year: "公元1224年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋理宗继位",
+        location: "临安",
+        figures: "赵昀",
+        brief: "宋理宗赵昀是宋宁宗养子，在位前期由史弥远专权，后期亲政，但朝政日益腐败。"
+    },
+    {
+        id: 97,
+        year: "公元1234年",
+        date: null,
+        dynasty: "南宋",
+        event: "端平入洛",
+        location: "洛阳",
+        figures: "赵葵、全子才",
+        brief: "南宋联合蒙古灭金后，派兵收复洛阳等地，但由于粮草不继，宋军大败，蒙古与南宋关系破裂。"
+    },
+    {
+        id: 98,
+        year: "公元1264年",
+        date: null,
+        dynasty: "南宋",
+        event: "宋度宗继位",
+        location: "临安",
+        figures: "赵禥",
+        brief: "宋度宗赵禥是宋理宗之侄，在位期间沉迷酒色，朝政由贾似道把持，南宋统治日益腐朽。"
+    },
+    {
+        id: 99,
         year: "公元1271年",
         date: null,
         dynasty: "元朝",
@@ -953,36 +1093,36 @@ function initDynastyFilter() {
     // 定义朝代分组
     const dynastyGroups = [
         {
-            name: '远古时期（原始社会：炎黄部落、大禹治水）',
-            dynasties: []
+            name: '远古时期',
+            dynasties: ['远古']
         },
         {
-            name: '夏商周（奴隶社会：分封制、甲骨文）',
-            dynasties: ['夏', '商', '周']
+            name: '夏商周',
+            dynasties: ['夏朝', '商朝', '西周', '东周']
         },
         {
-            name: '春秋战国（大变革：百家争鸣、商鞅变法）',
+            name: '春秋战国',
             dynasties: ['春秋', '战国']
         },
         {
-            name: '秦汉（大一统：秦统一六国、汉武帝大一统）',
-            dynasties: ['秦', '西汉', '东汉']
+            name: '秦汉',
+            dynasties: ['秦朝', '西汉', '东汉']
         },
         {
-            name: '三国两晋南北朝（政权分立：赤壁之战、孝文帝改革）',
+            name: '三国两晋南北朝',
             dynasties: ['三国', '西晋', '东晋', '南北朝']
         },
         {
-            name: '隋唐（繁荣开放：贞观之治、科举制）',
-            dynasties: ['隋', '唐']
+            name: '隋唐',
+            dynasties: ['隋朝', '唐朝']
         },
         {
-            name: '五代十国宋辽夏金（民族政权并立：王安石变法、活字印刷术）',
+            name: '五代十国宋辽夏金',
             dynasties: ['五代十国', '北宋', '南宋', '辽', '夏', '金']
         },
         {
-            name: '元明清（统一多民族国家巩固：行省制、郑和下西洋）',
-            dynasties: ['元', '明', '清']
+            name: '元明清',
+            dynasties: ['元朝', '明朝', '清朝']
         }
     ];
     
