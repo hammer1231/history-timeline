@@ -30,6 +30,13 @@
         </div>
     </div>
 
+    <!-- 汉堡菜单按钮（小屏幕显示） -->
+    <button class="hamburger-menu" id="hamburgerMenu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
     <!-- 主内容区 -->
     <div class="main-container">
         <!-- 历史事件展示区 -->
@@ -40,6 +47,19 @@
         <!-- 右侧时间轴导航 -->
         <div class="timeline-navigation" id="timelineNavigation">
             <!-- 时间轴导航将通过JavaScript动态生成 -->
+        </div>
+    </div>
+
+    <!-- 模态窗口（小屏幕显示时间轴） -->
+    <div class="modal" id="timelineModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>中国古代历史时间轴</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalTimelineNavigation"></div>
+            </div>
         </div>
     </div>
 

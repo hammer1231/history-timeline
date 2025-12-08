@@ -1085,6 +1085,122 @@ function renderEventsAndNavigation(events) {
     timelineNavigation.appendChild(navList);
 }
 
+// 在模态窗口中渲染时间轴导航
+function renderModalTimelineNavigation(events) {
+    // 获取模态窗口中的导航容器
+    const modalTimelineNavigation = document.getElementById('modalTimelineNavigation');
+    
+    // 清空容器内容
+    modalTimelineNavigation.innerHTML = '';
+    
+    // 按年代正序排序事件（先远古，后近代）
+    const sortedEvents = [...events].sort((a, b) => {
+        // 首先按年份排序
+        const yearA = yearToNumber(a.year);
+        const yearB = yearToNumber(b.year);
+        
+        if (yearA !== yearB) {
+            return yearA - yearB;
+        }
+        
+        // 同一年份按月份排序
+        if (a.date && b.date) {
+            return a.date.localeCompare(b.date, 'zh-CN');
+        }
+        
+        // 没有月份的排后面
+        if (a.date && !b.date) return -1;
+        if (!a.date && b.date) return 1;
+        
+        // 同一年份且都没有月份，按事件id排序（代表重要性）
+        return a.id - b.id;
+    });
+    
+    // 按朝代分组事件
+    const eventsByDynasty = {};
+    sortedEvents.forEach(event => {
+        if (!eventsByDynasty[event.dynasty]) {
+            eventsByDynasty[event.dynasty] = [];
+        }
+        eventsByDynasty[event.dynasty].push(event);
+    });
+    
+    // 创建时间轴导航列表
+    const navList = document.createElement('ul');
+    navList.className = 'timeline-nav-list';
+    
+    // 遍历每个朝代
+    Object.keys(eventsByDynasty).forEach(dynasty => {
+        // 获取该朝代的所有事件
+        const dynastyEvents = eventsByDynasty[dynasty];
+        
+        // 创建朝代标题
+        const dynastyItem = document.createElement('li');
+        dynastyItem.className = 'dynasty-item';
+        
+        const dynastyTitle = document.createElement('div');
+        dynastyTitle.className = 'dynasty-title';
+        dynastyTitle.innerHTML = `
+            <span class="dynasty-name">${dynasty}</span>
+            <span class="expand-arrow">▼</span>
+        `;
+        
+        // 添加点击事件监听器，点击时展开/收起年份列表
+        dynastyTitle.addEventListener('click', (e) => {
+            if (e.target.classList.contains('dynasty-title') || 
+                e.target.classList.contains('dynasty-name') || 
+                e.target.classList.contains('expand-arrow')) {
+                
+                // 切换展开/收起状态
+                const isExpanded = yearList.style.display === 'block';
+                yearList.style.display = isExpanded ? 'none' : 'block';
+                
+                // 切换箭头方向
+                const arrow = dynastyTitle.querySelector('.expand-arrow');
+                arrow.textContent = isExpanded ? '▼' : '▲';
+            }
+        });
+        
+        dynastyItem.appendChild(dynastyTitle);
+        
+        // 创建年份列表
+        const yearList = document.createElement('ul');
+        yearList.className = 'year-list';
+        // 默认隐藏年份列表
+        yearList.style.display = 'none';
+        
+        // 遍历该朝代的每个事件
+        dynastyEvents.forEach(event => {
+            // 为事件创建唯一ID
+            const eventId = `event-${event.id}`;
+            
+            // 创建年份导航项
+            const yearItem = document.createElement('li');
+            yearItem.className = 'year-item';
+            yearItem.textContent = `${event.year} - ${event.event}`;
+            yearItem.addEventListener('click', () => {
+                // 关闭模态窗口
+                closeModal();
+                
+                // 平滑滚动到对应的事件卡片
+                setTimeout(() => {
+                    document.getElementById(eventId).scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100); // 延迟执行以确保模态窗口已关闭
+            });
+            
+            yearList.appendChild(yearItem);
+        });
+        
+        dynastyItem.appendChild(yearList);
+        navList.appendChild(dynastyItem);
+    });
+    
+    modalTimelineNavigation.appendChild(navList);
+}
+
 // 初始化朝代筛选下拉菜单
 function initDynastyFilter() {
     // 获取筛选下拉菜单
@@ -1171,6 +1287,44 @@ function addEventListeners() {
     // 重置按钮事件
     const resetBtn = document.getElementById('resetBtn');
     resetBtn.addEventListener('click', handleReset);
+    
+    // 汉堡菜单事件
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    hamburgerMenu.addEventListener('click', openModal);
+    
+    // 关闭模态窗口事件
+    const closeModalBtn = document.getElementById('closeModal');
+    closeModalBtn.addEventListener('click', closeModal);
+    
+    // 点击模态窗口外部关闭
+    const modal = document.getElementById('timelineModal');
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // ESC键关闭模态窗口
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+}
+
+// 打开模态窗口
+function openModal() {
+    const modal = document.getElementById('timelineModal');
+    modal.style.display = 'block';
+    
+    // 在模态窗口中渲染时间轴导航
+    renderModalTimelineNavigation(historicalEvents);
+}
+
+// 关闭模态窗口
+function closeModal() {
+    const modal = document.getElementById('timelineModal');
+    modal.style.display = 'none';
 }
 
 // 搜索功能
