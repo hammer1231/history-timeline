@@ -929,7 +929,18 @@ function yearToNumber(yearStr) {
 }
 
 // 渲染历史事件卡片和时间轴导航
-function renderEventsAndNavigation(events) {
+// 搜索词高亮函数
+function highlightSearchTerm(text, searchTerm) {
+    if (!searchTerm) return text;
+    
+    // 创建正则表达式，不区分大小写
+    const regex = new RegExp(`(${searchTerm})`, 'gi');
+    
+    // 使用荧光黄背景和主题色文字高亮搜索词
+    return text.replace(regex, '<span class="search-highlight">$1</span>');
+}
+
+function renderEventsAndNavigation(events, searchTerm = '') {
     // 获取容器元素
     const eventsContainer = document.getElementById('eventsContainer');
     const timelineNavigation = document.getElementById('timelineNavigation');
@@ -937,6 +948,15 @@ function renderEventsAndNavigation(events) {
     // 清空容器内容
     eventsContainer.innerHTML = '';
     timelineNavigation.innerHTML = '<h3>中国古代历史时间轴</h3>';
+    
+    // 如果没有搜索结果，显示提示信息
+    if (events.length === 0) {
+        const noResults = document.createElement('div');
+        noResults.className = 'no-results';
+        noResults.textContent = '未找到相关结果';
+        eventsContainer.appendChild(noResults);
+        return;
+    }
     
     // 按年代正序排序事件（先远古，后近代）
     const sortedEvents = [...events].sort((a, b) => {
@@ -1047,17 +1067,23 @@ function renderEventsAndNavigation(events) {
                     ${event.politicsSystem.split('、').map(sys => `<span class="politics-tag">${sys}</span>`).join('')}
                 </div>` : '';
             
+            // 高亮搜索词
+            const highlightedEvent = highlightSearchTerm(event.event, searchTerm);
+            const highlightedLocation = highlightSearchTerm(event.location, searchTerm);
+            const highlightedFigures = highlightSearchTerm(event.figures, searchTerm);
+            const highlightedBrief = highlightSearchTerm(event.brief || '', searchTerm);
+            
             eventCard.innerHTML = `
                 <div class="event-header">
-                    <h4 class="event-title">${event.event}</h4>
+                    <h4 class="event-title">${highlightedEvent}</h4>
                     <span class="event-year">${event.year}</span>
                 </div>
                 <span class="dynasty-tag">${event.dynasty}</span>
                 <p class="event-date">${event.date || ''}</p>
-                <p class="event-location">地点: ${event.location}</p>
-                <p class="event-people">人物: ${event.figures}</p>
+                <p class="event-location">地点: ${highlightedLocation}</p>
+                <p class="event-people">人物: ${highlightedFigures}</p>
                 ${politicsSystemHtml}
-                <p class="event-brief">${event.brief}</p>
+                <p class="event-brief">${highlightedBrief}</p>
             `;
             
             // 添加事件卡片到容器
@@ -1350,8 +1376,8 @@ function handleSearch() {
         filteredEvents = filteredEvents.filter(event => event.dynasty === selectedDynasty);
     }
     
-    // 重新渲染时间轴和导航
-    renderEventsAndNavigation(filteredEvents);
+    // 重新渲染时间轴和导航，传递搜索词用于高亮
+    renderEventsAndNavigation(filteredEvents, searchTerm);
 }
 
 // 筛选功能
